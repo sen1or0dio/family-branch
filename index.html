@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Семейное Древо</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen" class="auth-screen">
+  <div class="auth-backdrop">
+    <div class="auth-tree-art">
+      <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" class="bg-tree">
+        <g stroke="#c9a84c" fill="none" opacity="0.15">
+          <!-- Trunk -->
+          <path d="M300 680 C298 620 295 560 300 480" stroke-width="8"/>
+          <!-- Main branches -->
+          <path d="M300 480 C280 450 240 420 180 390" stroke-width="5"/>
+          <path d="M300 480 C320 450 360 420 420 390" stroke-width="5"/>
+          <path d="M300 520 C285 490 260 465 220 440" stroke-width="4"/>
+          <path d="M300 520 C315 490 340 465 380 440" stroke-width="4"/>
+          <!-- Sub branches -->
+          <path d="M180 390 C160 370 130 350 100 330" stroke-width="3"/>
+          <path d="M180 390 C170 360 160 330 155 300" stroke-width="3"/>
+          <path d="M420 390 C440 370 470 350 500 330" stroke-width="3"/>
+          <path d="M420 390 C430 360 440 330 445 300" stroke-width="3"/>
+          <!-- Twigs -->
+          <path d="M100 330 C85 315 70 300 55 285" stroke-width="2"/>
+          <path d="M100 330 C95 310 92 290 95 265" stroke-width="2"/>
+          <path d="M155 300 C140 280 125 265 105 250" stroke-width="2"/>
+          <path d="M155 300 C155 275 158 250 155 220" stroke-width="2"/>
+          <path d="M500 330 C515 315 530 300 545 285" stroke-width="2"/>
+          <path d="M500 330 C505 310 508 290 505 265" stroke-width="2"/>
+          <path d="M445 300 C460 280 475 265 495 250" stroke-width="2"/>
+          <path d="M445 300 C445 275 442 250 445 220" stroke-width="2"/>
+          <!-- Top branches -->
+          <path d="M300 480 C300 450 295 410 300 370" stroke-width="4"/>
+          <path d="M300 370 C280 345 250 325 215 310" stroke-width="3"/>
+          <path d="M300 370 C320 345 350 325 385 310" stroke-width="3"/>
+          <!-- Leaves dots -->
+          <circle cx="55" cy="280" r="4" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="95" cy="260" r="4" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="105" cy="245" r="3" fill="#c9a84c" opacity="0.3"/>
+          <circle cx="155" cy="215" r="4" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="215" cy="305" r="4" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="545" cy="280" r="4" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="505" cy="260" r="4" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="495" cy="245" r="3" fill="#c9a84c" opacity="0.3"/>
+          <circle cx="445" cy="215" r="4" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="385" cy="305" r="4" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="300" cy="140" r="5" fill="#c9a84c" opacity="0.5"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="auth-panel">
+    <div class="auth-logo">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="21" stroke="#c9a84c" stroke-width="1.5"/>
+        <path d="M22 38 C22 28 22 22 22 16" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+        <path d="M22 22 C18 18 12 16 8 14" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M22 22 C26 18 32 16 36 14" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M22 28 C19 24 15 22 11 21" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M22 28 C25 24 29 22 33 21" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="8" cy="13" r="2" fill="#c9a84c"/>
+        <circle cx="36" cy="13" r="2" fill="#c9a84c"/>
+        <circle cx="11" cy="20" r="1.5" fill="#c9a84c"/>
+        <circle cx="33" cy="20" r="1.5" fill="#c9a84c"/>
+      </svg>
+      <div class="auth-logo-text">
+        <span class="auth-title-main">Семейное</span>
+        <span class="auth-title-sub">ДРЕВО</span>
+      </div>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Вход</button>
+      <button class="auth-tab" data-tab="register">Регистрация</button>
+    </div>
+
+    <!-- Login Form -->
+    <div class="auth-form" id="login-form">
+      <div class="form-group">
+        <label>Электронная почта</label>
+        <input type="email" id="login-email" placeholder="your@email.com" autocomplete="email"/>
+      </div>
+      <div class="form-group">
+        <label>Пароль</label>
+        <div class="input-with-icon">
+          <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password"/>
+          <button class="toggle-password" data-target="login-password">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="auth-error" id="login-error"></div>
+      <button class="btn-primary" id="login-btn">
+        <span>Войти</span>
+        <div class="btn-spinner hidden"></div>
+      </button>
+    </div>
+
+    <!-- Register Form -->
+    <div class="auth-form hidden" id="register-form">
+      <div class="form-group">
+        <label>Ваше имя</label>
+        <input type="text" id="reg-name" placeholder="Иван Петров" autocomplete="name"/>
+      </div>
+      <div class="form-group">
+        <label>Электронная почта</label>
+        <input type="email" id="reg-email" placeholder="your@email.com" autocomplete="email"/>
+      </div>
+      <div class="form-group">
+        <label>Пароль <span class="hint">(минимум 8 символов)</span></label>
+        <div class="input-with-icon">
+          <input type="password" id="reg-password" placeholder="••••••••" autocomplete="new-password"/>
+          <button class="toggle-password" data-target="reg-password">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="auth-error" id="reg-error"></div>
+      <button class="btn-primary" id="register-btn">
+        <span>Создать аккаунт</span>
+        <div class="btn-spinner hidden"></div>
+      </button>
+    </div>
+
+    <p class="auth-footer">Сохраните историю вашей семьи навсегда</p>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="app hidden">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="21" stroke="#c9a84c" stroke-width="1.5"/>
+          <path d="M22 38 C22 28 22 22 22 16" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+          <path d="M22 22 C18 18 12 16 8 14" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M22 22 C26 18 32 16 36 14" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="8" cy="13" r="2" fill="#c9a84c"/>
+          <circle cx="36" cy="13" r="2" fill="#c9a84c"/>
+        </svg>
+        <span>Семейное Древо</span>
+      </div>
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-view="tree">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Древо</span>
+      </button>
+      <button class="nav-item" data-view="list">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        <span>Список</span>
+      </button>
+      <button class="nav-item" data-view="stats">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>Статистика</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-actions">
+      <button class="btn-add-member" id="add-member-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Добавить родственника</span>
+      </button>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar" id="user-avatar">И</div>
+        <div class="user-details">
+          <span class="user-name" id="sidebar-user-name">Загрузка...</span>
+          <span class="user-email" id="sidebar-user-email"></span>
+        </div>
+      </div>
+      <button class="btn-logout" id="logout-btn" title="Выйти">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Tree View -->
+    <div class="view active" id="view-tree">
+      <div class="view-toolbar">
+        <div class="toolbar-left">
+          <h1 class="tree-name" id="tree-name">Семейное Древо</h1>
+          <span class="member-count" id="member-count">0 участников</span>
+        </div>
+        <div class="toolbar-right">
+          <div class="search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="search-input" placeholder="Поиск по имени..."/>
+          </div>
+          <div class="zoom-controls">
+            <button id="zoom-out" title="Уменьшить">−</button>
+            <span id="zoom-level">100%</span>
+            <button id="zoom-in" title="Увеличить">+</button>
+            <button id="zoom-fit" title="По размеру">⊡</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-canvas-wrapper" id="tree-canvas-wrapper">
+        <div class="tree-canvas" id="tree-canvas">
+          <svg class="connections-layer" id="connections-svg"></svg>
+          <div class="nodes-layer" id="nodes-layer"></div>
+        </div>
+        <div class="empty-tree hidden" id="empty-tree">
+          <div class="empty-icon">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="38" stroke="#c9a84c" stroke-width="1.5" opacity="0.4"/>
+              <path d="M40 65 C40 50 40 40 40 30" stroke="#c9a84c" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+              <path d="M40 38 C35 32 25 28 15 25" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+              <path d="M40 38 C45 32 55 28 65 25" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+              <circle cx="15" cy="24" r="3" fill="#c9a84c" opacity="0.5"/>
+              <circle cx="65" cy="24" r="3" fill="#c9a84c" opacity="0.5"/>
+            </svg>
+          </div>
+          <h2>Древо ещё пусто</h2>
+          <p>Начните с добавления первого члена семьи</p>
+          <button class="btn-primary" id="empty-add-btn">Добавить первого родственника</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- List View -->
+    <div class="view hidden" id="view-list">
+      <div class="view-toolbar">
+        <h1>Все родственники</h1>
+        <div class="toolbar-right">
+          <div class="search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="list-search" placeholder="Поиск..."/>
+          </div>
+          <div class="filter-row">
+            <select id="filter-gender">
+              <option value="">Все</option>
+              <option value="male">Мужчины</option>
+              <option value="female">Женщины</option>
+            </select>
+            <select id="filter-alive">
+              <option value="">Живые и умершие</option>
+              <option value="1">Живые</option>
+              <option value="0">Умершие</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="members-grid" id="members-grid"></div>
+    </div>
+
+    <!-- Stats View -->
+    <div class="view hidden" id="view-stats">
+      <div class="view-toolbar">
+        <h1>Статистика древа</h1>
+      </div>
+      <div class="stats-content" id="stats-content"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MEMBER MODAL -->
+<div class="modal-overlay hidden" id="member-modal">
+  <div class="modal modal-large">
+    <div class="modal-header">
+      <h2 id="modal-title">Добавить родственника</h2>
+      <button class="modal-close" id="modal-close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-photo-section">
+        <div class="photo-upload-area" id="photo-upload-area">
+          <img id="modal-photo-preview" src="" alt="" class="hidden"/>
+          <div class="photo-placeholder" id="photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Добавить фото</span>
+          </div>
+          <input type="file" id="photo-input" accept="image/*" class="hidden"/>
+        </div>
+      </div>
+
+      <div class="modal-form-section">
+        <div class="form-tabs">
+          <button class="form-tab active" data-ftab="basic">Основное</button>
+          <button class="form-tab" data-ftab="dates">Даты и места</button>
+          <button class="form-tab" data-ftab="bio">Биография</button>
+          <button class="form-tab" data-ftab="relations">Связи</button>
+        </div>
+
+        <!-- Basic Info -->
+        <div class="form-panel active" id="ftab-basic">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Имя <span class="required">*</span></label>
+              <input type="text" id="m-first-name" placeholder="Иван"/>
+            </div>
+            <div class="form-group">
+              <label>Отчество</label>
+              <input type="text" id="m-middle-name" placeholder="Иванович"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Фамилия</label>
+              <input type="text" id="m-last-name" placeholder="Иванов"/>
+            </div>
+            <div class="form-group">
+              <label>Девичья фамилия</label>
+              <input type="text" id="m-maiden-name" placeholder="Петрова"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Пол</label>
+              <select id="m-gender">
+                <option value="">Не указан</option>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+                <option value="other">Другой</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Статус</label>
+              <div class="toggle-row">
+                <label class="toggle">
+                  <input type="checkbox" id="m-is-alive" checked/>
+                  <span class="toggle-slider"></span>
+                </label>
+                <span id="alive-label">Живёт</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Профессия / Занятие</label>
+            <input type="text" id="m-occupation" placeholder="Инженер, художник..."/>
+          </div>
+          <div class="form-group">
+            <label>Образование</label>
+            <input type="text" id="m-education" placeholder="МГУ, факультет..."/>
+          </div>
+        </div>
+
+        <!-- Dates -->
+        <div class="form-panel hidden" id="ftab-dates">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Дата рождения</label>
+              <input type="date" id="m-birth-date"/>
+            </div>
+            <div class="form-group">
+              <label>Место рождения</label>
+              <input type="text" id="m-birth-place" placeholder="Москва, Россия"/>
+            </div>
+          </div>
+          <div class="death-section" id="death-section">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Дата смерти</label>
+                <input type="date" id="m-death-date"/>
+              </div>
+              <div class="form-group">
+                <label>Место смерти</label>
+                <input type="text" id="m-death-place" placeholder="Санкт-Петербург"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="form-panel hidden" id="ftab-bio">
+          <div class="form-group">
+            <label>Биография</label>
+            <textarea id="m-bio" rows="5" placeholder="Расскажите о жизни этого человека..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Заметки</label>
+            <textarea id="m-notes" rows="3" placeholder="Личные заметки, интересные факты..."></textarea>
+          </div>
+        </div>
+
+        <!-- Relations -->
+        <div class="form-panel hidden" id="ftab-relations">
+          <div class="relations-header">
+            <p class="hint-text">Добавьте связи после создания участника, используя кнопку «Добавить связь»</p>
+          </div>
+          <div id="modal-relations-list" class="relations-list"></div>
+          <button class="btn-secondary" id="add-relation-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Добавить связь
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-ghost" id="modal-cancel">Отмена</button>
+      <button class="btn-danger hidden" id="modal-delete">Удалить</button>
+      <button class="btn-primary" id="modal-save">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<!-- RELATION MODAL -->
+<div class="modal-overlay hidden" id="relation-modal">
+  <div class="modal modal-small">
+    <div class="modal-header">
+      <h2>Добавить связь</h2>
+      <button class="modal-close" id="rel-modal-close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Родственник</label>
+        <select id="rel-member-select"></select>
+      </div>
+      <div class="form-group">
+        <label>Тип связи</label>
+        <select id="rel-type-select">
+          <option value="parent">Родитель</option>
+          <option value="child">Ребёнок</option>
+          <option value="spouse">Супруг / Супруга</option>
+          <option value="sibling">Брат / Сестра</option>
+          <option value="grandparent">Бабушка / Дедушка</option>
+          <option value="grandchild">Внук / Внучка</option>
+          <option value="step_parent">Отчим / Мачеха</option>
+          <option value="step_child">Пасынок / Падчерица</option>
+          <option value="adopted_parent">Приёмный родитель</option>
+          <option value="adopted_child">Приёмный ребёнок</option>
+        </select>
+      </div>
+      <div id="marriage-fields" class="hidden">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Дата свадьбы</label>
+            <input type="date" id="rel-marriage-date"/>
+          </div>
+          <div class="form-group">
+            <label>Дата развода</label>
+            <input type="date" id="rel-divorce-date"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" id="rel-modal-cancel">Отмена</button>
+      <button class="btn-primary" id="rel-modal-save">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBER DETAIL PANEL -->
+<div class="detail-panel hidden" id="detail-panel">
+  <div class="detail-header">
+    <button class="detail-close" id="detail-close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="detail-photo-wrap">
+      <div class="detail-photo" id="detail-photo">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="detail-badge" id="detail-badge"></div>
+    </div>
+    <h2 class="detail-name" id="detail-name"></h2>
+    <p class="detail-dates" id="detail-dates"></p>
+  </div>
+
+  <div class="detail-body">
+    <div class="detail-section" id="detail-info"></div>
+    <div class="detail-section" id="detail-relations-section">
+      <h3 class="detail-section-title">Родственники</h3>
+      <div id="detail-relations"></div>
+    </div>
+    <div class="detail-section" id="detail-bio-section">
+      <h3 class="detail-section-title">Биография</h3>
+      <p id="detail-bio" class="detail-bio-text"></p>
+    </div>
+  </div>
+
+  <div class="detail-footer">
+    <button class="btn-secondary" id="detail-edit-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Редактировать
+    </button>
+    <button class="btn-secondary" id="detail-add-rel-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Связь
+    </button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
