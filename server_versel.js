@@ -88,11 +88,12 @@ function getUserByToken(token) {
 }
 
 function sendJson(res, statusCode, data) {
+  res.statusCode = statusCode;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-  res.status(statusCode).json(data);
+  res.end(JSON.stringify(data));
 }
 
 function readBody(req) {
@@ -294,3 +295,4 @@ async function handler(req, res) {
 
 module.exports = handler;
 module.exports.default = handler;
+module.exports.handler = handler;
