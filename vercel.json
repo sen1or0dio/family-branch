@@ -12,7 +12,11 @@
       "dest": "/api"
     },
     {
-      "src": "/(?!api|app\\.js|style\\.css|index\\.html)(.*)",
+      "src": "/(.*\\.(js|css))",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
       "dest": "/index.html"
     }
   ]
