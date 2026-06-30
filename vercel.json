@@ -4,18 +4,6 @@
     {
       "src": "api/index.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "style.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "app.js",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -24,9 +12,8 @@
       "dest": "/api"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "status": 200
+      "src": "/(?!api|app\\.js|style\\.css|index\\.html)(.*)",
+      "dest": "/index.html"
     }
   ]
 }
