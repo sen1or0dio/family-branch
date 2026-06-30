@@ -2,10 +2,6 @@
    FAMILY TREE — Frontend Application
    ============================================================= */
 
-if (typeof window === 'undefined' || typeof document === 'undefined') {
-  module.exports = {};
-} else {
-
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:3001/api'
   : '/api';
@@ -1165,5 +1161,3 @@ document.addEventListener('keydown', e => {
 // ─── INIT ─────────────────────────────────────────────────────
 applyTransform();
 initApp();
-
-}
